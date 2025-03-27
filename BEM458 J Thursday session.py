@@ -1,10 +1,10 @@
 #######################################################################################################################################################
 # 
-# Name:
-# SID:
-# Exam Date:
-# Module:
-# Github link for this assignment:  
+# Name:Nikhil Kumar Mohanty
+# SID:059061
+# Exam Date:27/03/2025
+# Module:BEM458
+# Github link for this assignment:  https://github.com/UniversityExeterBusinessSchool/practiceassessment-thursday-nikhilmohanty-creator
 #
 # ######################################################################################################################################################
 # Instruction 1. Read the questions and instructions carefully and complete scripts.
@@ -47,10 +47,54 @@ key_comments = {
     9: 'minor'
 }
 
+
+
 # Write your search code here and provide comments. 
 
 # Initialize an empty list to store (start, end) positions
+
+
+
+# Define your allocated keys (First and last digit of your SID)
+# Define the given dictionary
+key_comments = {
+    0: 'satisfactory',
+    1: 'order',
+    2: 'effort',
+    3: 'issues',
+    4: 'promptly',
+    5: 'appreciate',
+    6: 'experience',
+    7: 'resolve',
+    8: 'overall',
+    9: 'minor'
+}
+
+# Given
+customer_feedback = """Your recent order experience has been satisfactory overall. While there were some minor issues,
+we appreciate the effort made to resolve them promptly."
+"""
+
+# words SID digits
+allocated_words = [key_comments[0], key_comments[1]]  # ['satisfactory', 'order']
+
+# Create the list
 my_list = []
+
+# start and end positions
+for word in allocated_words:
+    start = customer_feedback.find(word)
+    if start != -1:
+        end = start + len(word) - 1  # End pos
+        my_list.append((start, end))
+
+# Printing result
+print(my_list)
+
+# Output 
+
+[(38, 49), (12, 16)]
+
 
 ##########################################################################################################################################################
 
@@ -71,7 +115,35 @@ my_list = []
 # Write your code for Average Order Value
 
 # Call your designed functions here
+def op(revenue, operating_income):
+    return (operating_income / revenue) * 100
 
+def rpc(total_revenue, number_of_customers):
+    return total_revenue / number_of_customers
+
+def ccm(lost_customers, total_customers):
+    return (lost_customers / total_customers) * 100
+
+def aov(total_revenue, number_of_orders):
+    return total_revenue / number_of_orders
+
+
+
+print("Operating Profit Margin:", op(75000, 8700))
+print("Revenue per Customer:", rpc(7500,87))
+print("Customer Churn Rate:", ccm(75, 87))
+print("Average Order Value:", aov(75000, 87))
+
+
+#output
+
+Operating Profit Margin: 11.600000000000001
+Revenue per Customer: 86.20689655172414
+Customer Churn Rate: 86.20689655172413
+Average Order Value: 862.0689655172414
+
+
+# as a businness analyts i understand that this all metrics and data can help me find out key stats of ecommerce and i can generate more profits and make the business efficient.
 ##########################################################################################################################################################
 
 # Question 3 - Regression
@@ -96,7 +168,75 @@ Price (£)    Demand (Units)
 70           85
 """
 
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Data
+price = np.array([20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]).reshape(-1, 1)
+demand = np.array([300, 280, 260, 240, 210, 190, 160, 140, 120, 100, 85])
+
+# Training  Linear Regression Model
+model = LinearRegression()
+model.fit(prices, demand)
+
+# Predicting  demand at price £52
+price_52 = np.array([[52]])
+demand_52 = model.predict(price_52)[0]
+
+#  Revenue = Price * Demand
+optimal_price = np.linspace(20, 70, 100).reshape(-1, 1)
+predicted_demand = model.predict(optimal_price)
+revenue = optimal_price.flatten() * predicted_demand
+max_revenue_index = np.argmax(revenue)
+best_price = optimal_price[max_revenue_index][0]
+
+# Print results
+print(f"demand: {demand_52:.2f} units")
+print(f"optimal price: £{best_price:.2f}")
+
+# As a analyst i get a lot of major insights throught this analysis which will help me maintain the stocks of my store during festive seasons and can predict the demand too.
+
+#output
+
+demand: 158.17 units
+optimal price: £43.74
+    
 # Write your code here
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Data
+price = np.array([20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70]).reshape(-1, 1)
+demand = np.array([300, 280, 260, 240, 210, 190, 160, 140, 120, 100, 85])
+
+# Training  Linear Regression Model
+model = LinearRegression()
+model.fit(prices, demand)
+
+# Predicting  demand at price £52
+price_52 = np.array([[52]])
+demand_52 = model.predict(price_52)[0]
+
+#  Revenue = Price * Demand
+optimal_price = np.linspace(20, 70, 100).reshape(-1, 1)
+predicted_demand = model.predict(optimal_price)
+revenue = optimal_price.flatten() * predicted_demand
+max_revenue_index = np.argmax(revenue)
+best_price = optimal_price[max_revenue_index][0]
+
+# Print results
+print(f"demand: {demand_52:.2f} units")
+print(f"optimal price: £{best_price:.2f}")
+
+# As a analyst i get a lot of major insights throught this analysis which will help me maintain the stocks of my store during festive seasons and can predict the demand too.
+
+#output
+
+demand: 158.17 units
+optimal price: £43.74
 
 ##########################################################################################################################################################
 
@@ -117,6 +257,34 @@ plt.ylabel="Random Number"
 plt.legend('---')
 plt.grid(True)
 plt.show()
+
+
+#answers
+
+
+Variable Naming:
+max-value → hyphen(-) # max_value should be used
+
+function incorrect Usage:
+integer(input(...)) → int(input(...)) 
+
+
+ERROR in plt.plot():
+markercolor and markeredgcolor =>  markerfacecolor and markeredgecolor.
+lable => label.
+
+
+String Formatting in plt.title():
+'Line Chart of 100 Random Numbers' should be enclosed in quotes.
+
+
+Assignment Issue:
+
+plt.xlabel="Index" → plt.xlabel("Index") parentheses should be used
+
+
+plt.legend('---') should be plt.legend(),labels are defined.
+
 
 
 
